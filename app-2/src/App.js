@@ -1,20 +1,23 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      groceryList: ["eggs", "milk", "beer", "apples", "chips", "guacamole"]
+    };
+  }
   render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+    let food = this.state.groceryList.map((element, index) => {
+      return (
+        <div key={index}>
+          <h3>{element}</h3>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+        // we wrapped the h3 inside a <div> to make it easier to style it in the future
+      );
+    });
+    return <div className="App">{food}</div>;
   }
 }
 
